@@ -2,8 +2,6 @@ from django.db import models
 from categorias.models import Categoria
 
 
-# Create your models here.
-
 TIPO_PRODUCTO_CHOICES = [
     ('Bienes', 'Bienes'),
     ('Servicios', 'Servicios'),

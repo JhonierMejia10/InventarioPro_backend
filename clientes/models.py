@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
 class Cliente(models.Model):
     class TipoClienteChoices(models.TextChoices):
         NATURAL = 'Persona Natural', 'Persona Natural'

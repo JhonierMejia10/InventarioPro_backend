@@ -16,8 +16,6 @@ class Proveedor(models.Model):
     def __str__(self):
         return f"{self.nombre} - Telefono: {self.telefono} - Correo: {self.correo}"
     
-
-
 from core.models import EstadoPago, TransaccionBase
 
 class OrdenCompra(TransaccionBase):

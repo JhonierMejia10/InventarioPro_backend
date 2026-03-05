@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Proveedor, OrdenCompra
+from .models import Proveedor, OrdenCompra, ItemOrdenCompra
 
 # Register your models here.
 admin.site.register(Proveedor)
 admin.site.register(OrdenCompra)
+admin.site.register(ItemOrdenCompra)

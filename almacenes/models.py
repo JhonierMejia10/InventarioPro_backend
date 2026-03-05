@@ -1,7 +1,5 @@
 from django.db import models
 
-
-# Create your models here.
 class Almacen(models.Model):
     nombre = models.CharField(max_length=255, blank=False, null=False, unique=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
