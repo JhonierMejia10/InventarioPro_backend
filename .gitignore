@@ -1,4 +1,5 @@
 # Ignorar la carpeta del entorno virtual
+env/
 envSisGes/
 
 # Ignorar archivos de configuración de Python
