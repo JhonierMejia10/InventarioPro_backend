@@ -16,11 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
 from core.views import CreateUserView, DashboardAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
+def api_root(request):
+    return JsonResponse({"status": "ok", "message": "InventarioPro API is running"})
+
+
 urlpatterns = [
+    path('', api_root, name='api-root'),
     path('admin/', admin.site.urls),
     path('api/user/register/', CreateUserView.as_view(), name='user-register'),
     path('api/v1/dashboard/', DashboardAPIView.as_view(), name='dashboard'),
