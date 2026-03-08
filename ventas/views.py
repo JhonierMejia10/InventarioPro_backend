@@ -24,6 +24,7 @@ class OrdenVentaViewSet(viewsets.ModelViewSet):
         con_saldo = self.request.query_params.get('con_saldo')
         if con_saldo and con_saldo.lower() == 'true':
             queryset = queryset.filter(total_pagado__lt=F('total'))
+            queryset = queryset.exclude(pedido__estado='Cancelado')
         return queryset
 
     def get_serializer_class(self):

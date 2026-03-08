@@ -15,6 +15,11 @@ class PagoService:
         # Validar saldo (lock de la orden para evitar race conditions)
         orden = Orden.objects.select_for_update().get(pk=orden.pk)
 
+        # Rechazar pago si el pedido asociado está cancelado
+        pedido = getattr(orden, 'pedido', None)
+        if pedido and pedido.estado == 'Cancelado':
+            raise ValidationError("No se puede registrar un pago para una orden cuyo pedido está cancelado.")
+
         if monto > orden.saldo_pendiente:
             raise ValidationError(f"El pago excede el saldo. Disponible: ${orden.saldo_pendiente}")
         

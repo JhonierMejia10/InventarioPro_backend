@@ -28,8 +28,7 @@ class Command(BaseCommand):
         almacen, created = Almacen.objects.get_or_create(
             nombre='Almacén Principal',
             defaults={
-                'direccion': 'Dirección por defecto',
-                'capacidad': 1000
+                'direccion': 'Dirección por defecto'
             }
         )
         if created:
