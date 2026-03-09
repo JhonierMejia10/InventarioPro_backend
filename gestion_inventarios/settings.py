@@ -71,6 +71,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://frontend-sistena-gestion-inventario.vercel.app",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://frontend-sistena-gestion-inventario.vercel.app",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOW_HEADERS = [
