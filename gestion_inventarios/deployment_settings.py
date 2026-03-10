@@ -22,7 +22,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://frontend-sistena-gestion-inventarios.onrender.com'
+    'https://frontend-sistena-gestion-inventario.vercel.app'
 ]
 
 STORAGES = {
