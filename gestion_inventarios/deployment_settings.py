@@ -49,16 +49,21 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'mail_admins': {
+        'console': {
             'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['mail_admins'],
+            'handlers': ['console'],
             'level': 'ERROR',
             'propagate': True,
+        },
+        'ventas': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
         },
     },
 }

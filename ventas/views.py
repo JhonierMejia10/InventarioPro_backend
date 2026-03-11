@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -9,6 +11,8 @@ from .services import OrdenVentaService
 from django.core.exceptions import ValidationError
 
 from rest_framework.decorators import action
+
+logger = logging.getLogger(__name__)
 
 #Endpoint viewset para las ordenes
 class OrdenVentaViewSet(viewsets.ModelViewSet):
@@ -53,6 +57,12 @@ class OrdenVentaViewSet(viewsets.ModelViewSet):
             return Response(
                 {'error':str(e)},
                 status=status.HTTP_400_BAD_REQUEST
+            )
+        except Exception as e:
+            logger.exception("Error no controlado al crear orden de venta")
+            return Response(
+                {'error': f'Error interno del servidor: {str(e)}'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         ordenVenta_serializer = OrdenSerializer(ordenVenta)
         return Response(ordenVenta_serializer.data, status=status.HTTP_201_CREATED)
