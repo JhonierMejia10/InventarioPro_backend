@@ -13,7 +13,7 @@ class StockViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
     
 class MovimientoViewSetOnlyView(viewsets.ReadOnlyModelViewSet):
-    queryset = Movimiento.objects.all()
+    queryset = Movimiento.objects.select_related('producto').all()
     serializer_class = MovimientoSerializer
     search_fields = ['id', 'producto__nombre', 'tipo_movimiento']
     permission_classes = [IsAuthenticated]

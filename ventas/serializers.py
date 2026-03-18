@@ -11,6 +11,8 @@ from pagos.models import MedioPago
 
 
 class OrdenItemSerializer(serializers.ModelSerializer):
+    producto_nombre = serializers.CharField(source='producto.nombre', read_only=True)
+
     class Meta:
         model = OrdenItem
         fields = '__all__'

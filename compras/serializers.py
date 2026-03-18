@@ -10,9 +10,11 @@ class ProveedorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ItemOrdenCompraSerializer(serializers.ModelSerializer):
+    producto_nombre = serializers.CharField(source='producto.nombre', read_only=True)
+
     class Meta:
         model = ItemOrdenCompra
-        fields = ["orden_compra","id", "producto", "cantidad", "precio_unitario"]
+        fields = ["orden_compra", "id", "producto", "producto_nombre", "cantidad", "precio_unitario"]
         read_only_fields = ['orden_compra']
     
 
@@ -21,6 +23,7 @@ class OrdenCompraSerializer(serializers.ModelSerializer):
     total_pagado = serializers.SerializerMethodField()
     saldo_pendiente = serializers.SerializerMethodField()
     proveedor_nombre = serializers.CharField(source='proveedor.nombre', read_only=True)
+    estado_pago_nombre = serializers.CharField(source='estado_pago.nombre', read_only=True)
 
     class Meta:
         model = OrdenCompra
